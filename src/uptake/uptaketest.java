@@ -7,6 +7,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxProfile;
+import org.openqa.selenium.firefox.internal.ProfilesIni;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import static org.junit.Assert.*;
@@ -14,12 +16,26 @@ import static org.junit.Assert.*;
 public class uptaketest {
 
 	public static void main(String[] args) throws InterruptedException {
-		// System.setProperty("webdriver.gecko.driver","/Users/coreylyons/Documents/workspace/Libraries/geckodriver");
+		// FIREFOX DRIVER (GECKO)
+		// Remove comments from Lines 19 and 21 to use Firefox - be sure to comment out Chrome Driver
+		// IMPORTANT: MUST UPDATE FILEPATH BELOW TO MATCH LOCAL MACHINE
+		// Gecko can be downloaded here: https://github.com/mozilla/geckodriver/releases
+		System.setProperty("webdriver.gecko.driver","/Selenium/geckodriver.exe");
 		// Create a new instance of the Firefox driver
-		//WebDriver driver = new FirefoxDriver();
+		// WebDriver driver = new FirefoxDriver();
 		
-		// Chrome driver
-		System.setProperty("webdriver.chrome.driver","/Users/coreylyons/Documents/workspace/Libraries/chromedriver");
+		// If experiencing Cert issues, use code below:
+		// WebDriver driver;
+		// ProfilesIni profile = new ProfilesIni();
+		// FirefoxProfile testprofile = profile.getProfile("default");
+		// testprofile.setAcceptUntrustedCertificates(true);
+		// testprofile.setAssumeUntrustedCertificateIssuer(true);
+		// driver = new FirefoxDriver(testprofile);
+		
+		// CHROME DRIVER
+		// IMPORTANT: MUST UPDATE FILEPATH BELOW TO MATCH LOCAL MACHINE
+		// Chromedriver can be downloaded here: https://sites.google.com/a/chromium.org/chromedriver/downloads
+		System.setProperty("webdriver.chrome.driver","/Selenium/chromedriver.exe");
 		// Create a new instance of the Chrome driver
 		WebDriver driver = new ChromeDriver();
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
@@ -373,7 +389,7 @@ public class uptaketest {
 	    	System.out.println("FAIL: Page did not load correctly: Approach Link in Primary Menu is Missing");
 	    	} 
 	    
-
+	    System.out.println("Ending test...");
 	    
 	    // Close the driver
         driver.close();
